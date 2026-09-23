@@ -31,7 +31,7 @@ def gridH(f):
 
 def gridV(f):
   print("gridV <= '1' when (((pixelVert > T_EDGE + BORDER_LINE_WIDTH) and", file=f)
-  print(f"\t\t\t\tpixelVert < T_EDGE - BORDER_LINE_WIDTH)) and(", file=f)
+  print(f"\t\t\t\tpixelVert < B_EDGE - BORDER_LINE_WIDTH)) and(", file=f)
   for i in range (1,9):
     print(f"\t\t\t\tpixelHorz = L_EDGE + BORDER_LINE_WIDTH + {100*i} or",file = f)
   print(f"\t\t\t\tpixelHorz = L_EDGE + BORDER_LINE_WIDTH + {100*(i+1)}) else '0';",file = f)
