@@ -1,0 +1,40 @@
+triggerTimeMarker <= '1' when (
+				((pixelVert = (T_EDGE + 1) or
+				pixelVert = (T_EDGE + 2) ) and
+				(pixelHorz > (triggerTime - std_logic_vector(to_unsigned(5, VIDEO_WIDTH_IN_BITS))) and
+				pixelHorz < (triggerTime + std_logic_vector(to_unsigned(5, VIDEO_WIDTH_IN_BITS))))) or 
+				((pixelVert = (T_EDGE + 3) or
+				pixelVert = (T_EDGE + 4) ) and
+				(pixelHorz > (triggerTime - std_logic_vector(to_unsigned(4, VIDEO_WIDTH_IN_BITS))) and
+				pixelHorz < (triggerTime + std_logic_vector(to_unsigned(4, VIDEO_WIDTH_IN_BITS))))) or 
+				((pixelVert = (T_EDGE + 5) or
+				pixelVert = (T_EDGE + 6) ) and
+				(pixelHorz > (triggerTime - std_logic_vector(to_unsigned(3, VIDEO_WIDTH_IN_BITS))) and
+				pixelHorz < (triggerTime + std_logic_vector(to_unsigned(3, VIDEO_WIDTH_IN_BITS))))) or 
+				((pixelVert = (T_EDGE + 7) or
+				pixelVert = (T_EDGE + 8) ) and
+				(pixelHorz > (triggerTime - std_logic_vector(to_unsigned(2, VIDEO_WIDTH_IN_BITS))) and
+				pixelHorz < (triggerTime + std_logic_vector(to_unsigned(2, VIDEO_WIDTH_IN_BITS))))) or 
+				((pixelVert = (T_EDGE + 9) or
+				pixelVert = (T_EDGE + 10)) and
+				pixelHorz = triggerTime)) else '0';
+triggerVoltMarker <= '1' when (
+				((pixelHorz = (L_EDGE + 1) or
+				pixelHorz = (L_EDGE + 2) ) and
+				(pixelVert > (triggerVolt - std_logic_vector(to_unsigned(5, VIDEO_WIDTH_IN_BITS))) and
+				pixelVert < (triggerVolt + std_logic_vector(to_unsigned(5, VIDEO_WIDTH_IN_BITS))))) or 
+				((pixelHorz = (L_EDGE + 3) or
+				pixelHorz = (L_EDGE + 4) ) and
+				(pixelVert > (triggerVolt - std_logic_vector(to_unsigned(4, VIDEO_WIDTH_IN_BITS))) and
+				pixelVert < (triggerVolt + std_logic_vector(to_unsigned(4, VIDEO_WIDTH_IN_BITS))))) or 
+				((pixelHorz = (L_EDGE + 5) or
+				pixelHorz = (L_EDGE + 6) ) and
+				(pixelVert > (triggerVolt - std_logic_vector(to_unsigned(3, VIDEO_WIDTH_IN_BITS))) and
+				pixelVert < (triggerVolt + std_logic_vector(to_unsigned(3, VIDEO_WIDTH_IN_BITS))))) or 
+				((pixelHorz = (L_EDGE + 7) or
+				pixelHorz = (L_EDGE + 8) ) and
+				(pixelVert > (triggerVolt - std_logic_vector(to_unsigned(2, VIDEO_WIDTH_IN_BITS))) and
+				pixelVert < (triggerVolt + std_logic_vector(to_unsigned(2, VIDEO_WIDTH_IN_BITS))))) or 
+				((pixelHorz = (L_EDGE +9) or
+				pixelHorz = (L_EDGE +10)) and
+				pixelVert = triggerVolt)) else '0';

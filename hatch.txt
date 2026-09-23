@@ -1,0 +1,90 @@
+hatchH <=	'1' when (
+						(pixelVert > T_EDGE + BORDER_LINE_WIDTH + 295) and --Upper and lower bounds
+						(pixelVert < T_EDGE + BORDER_LINE_WIDTH + 305)
+						) and (
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 20) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 40) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 60) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 80) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 100) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 120) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 140) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 160) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 180) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 200) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 220) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 240) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 260) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 280) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 300) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 320) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 340) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 360) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 380) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 400) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 420) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 440) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 460) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 480) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 500) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 520) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 540) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 560) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 580) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 600) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 620) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 640) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 660) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 680) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 700) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 720) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 740) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 760) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 780) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 800) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 820) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 840) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 860) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 880) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 900) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 920) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 940) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 960) or
+						(pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 980) --Each individual hatch
+						)
+						 else '0';
+hatchV <=	'1' when (
+						(pixelHorz > L_EDGE + BORDER_LINE_WIDTH + 495) and --Left and right bounds
+						(pixelHorz < L_EDGE + BORDER_LINE_WIDTH + 505)
+						) and (
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 12) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 24) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 36) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 48) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 60) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 72) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 84) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 96) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 108) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 120) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 132) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 144) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 156) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 168) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 180) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 192) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 204) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 216) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 228) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 240) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 252) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 264) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 276) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 288) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 300) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 312) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 324) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 336) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 588) --Each individual hatch
+						)
+						 else '0';
