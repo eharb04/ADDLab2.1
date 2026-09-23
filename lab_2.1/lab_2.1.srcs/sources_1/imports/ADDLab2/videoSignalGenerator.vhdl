@@ -78,7 +78,7 @@ begin
             if resetn = '0' then
                 pixelHorz <= (others => '0');
             elsif(h_cnt >= H_FP + H_SYNC + H_BP - 1) then
-                pixelVert <= h_cnt - (H_FP + H_SYNC + H_BP - 1);
+                pixelHorz <= h_cnt - (H_FP + H_SYNC + H_BP - 1);
             end if;
         end if;
     end process;
