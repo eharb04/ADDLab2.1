@@ -109,21 +109,21 @@ begin
                 activeButton <= "000";
                 prevButton <= "111"; --Assume prev was not pressed
                 currButton <= "111"; --Active Low, so set to not being pressed
-                triggerTime <= STD_LOGIC_VECTOR(TO_UNSIGNED(500, VIDEO_WIDTH_IN_BITS)); --Somewhere around the middle
-                triggerVolt <= STD_LOGIC_VECTOR(TO_UNSIGNED(300, VIDEO_WIDTH_IN_BITS)); 
+                triggerTime <= STD_LOGIC_VECTOR(TO_UNSIGNED(500, VIDEO_WIDTH_IN_BITS)) + L_EDGE; --Somewhere around the middle
+                triggerVolt <= STD_LOGIC_VECTOR(TO_UNSIGNED(300, VIDEO_WIDTH_IN_BITS)) + T_EDGE; 
             elsif activeButton > 0 then --Something has changed state
                 if (activeButton(0) = '1' and currButton(0) = '1') then --PL_KEY4 changed to being released
-                    if (currButton(2) = '1' and triggerTime > 0) then --PL_KEY2 is not being pressed
+                    if (currButton(2) = '1' and triggerTime > L_EDGE) then --PL_KEY2 is not being pressed
                         triggerTime <= triggerTime - 10;
-                    elsif (currButton(2) = '0' and triggerTime < 1279) then --PL_KEY2 is being pressed
+                    elsif (currButton(2) = '0' and triggerTime < R_EDGE) then --PL_KEY2 is being pressed
                         triggerTime <= triggerTime + 10;
                     end if;
                 end if;
                 
                 if (activeButton(1) = '1' and currButton(1) = '1') then --PL_KEY3 changed to being released
-                    if (currButton(2) = '1' and triggerVolt > 0) then --PL_KEY2 is not being pressed
+                    if (currButton(2) = '1' and triggerVolt > T_EDGE) then --PL_KEY2 is not being pressed
                         triggerVolt <= triggerVolt - 10;
-                    elsif (currButton(2) = '0' and triggerVolt < 719) then --PL_KEY2 is being pressed
+                    elsif (currButton(2) = '0' and triggerVolt < B_EDGE) then --PL_KEY2 is being pressed
                         triggerVolt <= triggerVolt + 10;
                     end if;
                 end if;
