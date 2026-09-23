@@ -35,6 +35,7 @@ architecture Behavioral of scopeFace is
     signal triggerTimeMarker, triggerVoltMarker : STD_LOGIC;
     signal hatchH, hatchV: STD_LOGIC;
     signal triggerVoltLevel: STD_LOGIC;
+    signal insideBorder: STD_LOGIC; --bool if pixel is inside the drawing border
     
 
 
@@ -54,7 +55,23 @@ begin
                 green <= (others => '0');
                 blue <= (others => '0');
             else
-                if ((borderH = '1') or (borderV = '1')) then
+                if (ch1 = '1' and ch1Enb = '1' and insideBorder = '1') then -- Channel 1 input, red
+                    red <= CH1_R;
+                    green <= CH1_G;
+                    blue <= CH1_B;
+                elsif (ch2 = '1' and ch2Enb = '1' and insideBorder = '1') then -- Channel 2 input, yellow
+                    red <= CH2_R;
+                    green <= CH2_G;
+                    blue <= CH2_B;
+                elsif (triggerTimeMarker = '1' or triggerVoltMarker = '1') then
+                    red <= BORDER_R;
+                    green <= BORDER_G;
+                    blue <= BORDER_B;
+                elsif (triggerVoltLevel = '1') then --Green
+                    red <= TRIGGER_R;
+                    green <= TRIGGER_G;
+                    blue <= TRIGGER_B;
+                elsif ((borderH = '1') or (borderV = '1')) then
                     red <= BORDER_R;
                     green <= BORDER_G;
                     blue <= BORDER_B;
@@ -66,22 +83,6 @@ begin
                     red <= GRID_R;
                     green <= GRID_G;
                     blue <= GRID_B;
-                elsif (triggerVoltLevel = '1') then --Green
-                    red <= TRIGGER_R;
-                    green <= TRIGGER_G;
-                    blue <= TRIGGER_B;
-                elsif (ch1 = '1' and ch1Enb = '1') then -- Channel 1 input, red
-                    red <= CH1_R;
-                    green <= CH1_G;
-                    blue <= CH1_B;
-                elsif (ch2 = '1' and ch2Enb = '1') then -- Channel 2 input, yellow
-                    red <= CH2_R;
-                    green <= CH2_G;
-                    blue <= CH2_B;
-                elsif (triggerTimeMarker = '1' or triggerVoltMarker = '1') then
-                    red <= BORDER_R;
-                    green <= BORDER_G;
-                    blue <= BORDER_B;
                 else
                     red <= X"00";
                     green <= X"00";
@@ -90,13 +91,19 @@ begin
             end if;
         end if;
     end process;
+    
+    insideBorder <= '1' when ((pixelHorz > L_EDGE + BORDER_LINE_WIDTH) and
+                              (pixelHorz < R_EDGE - BORDER_LINE_WIDTH)) and --Horizontal bounds
+                             ((pixelVert > T_EDGE + BORDER_LINE_WIDTH) and
+                              (pixelVert < B_EDGE - BORDER_LINE_WIDTH)) --Bottom border
+                              else '0';
 
     borderH <=	'1' when ((pixelHorz > L_EDGE - BORDER_LINE_WIDTH) and
                          (pixelHorz < R_EDGE + BORDER_LINE_WIDTH)) and --Horizontal bounds
-                         (((pixelVert < B_EDGE - BORDER_LINE_WIDTH) and
-                         (pixelVert > B_EDGE + BORDER_LINE_WIDTH)) or --Bottom border
-                         ((pixelVert < T_EDGE - BORDER_LINE_WIDTH) and
-                         (pixelVert > T_EDGE + BORDER_LINE_WIDTH))) --Top border
+                         (((pixelVert > B_EDGE - BORDER_LINE_WIDTH) and
+                         (pixelVert < B_EDGE + BORDER_LINE_WIDTH)) or --Bottom border
+                         ((pixelVert > T_EDGE - BORDER_LINE_WIDTH) and
+                         (pixelVert < T_EDGE + BORDER_LINE_WIDTH))) --Top border
                          else '0';
     borderV <=	'1' when ((pixelVert > T_EDGE - BORDER_LINE_WIDTH) and
                          (pixelVert < B_EDGE + BORDER_LINE_WIDTH)) and --Horizontal bounds
@@ -118,7 +125,7 @@ gridH <= '1' when (((pixelHorz > L_EDGE + BORDER_LINE_WIDTH) and
 				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 480 or
 				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 540) else '0';
 gridV <= '1' when (((pixelVert > T_EDGE + BORDER_LINE_WIDTH) and
-				pixelVert < T_EDGE - BORDER_LINE_WIDTH)) and(
+				pixelVert < B_EDGE - BORDER_LINE_WIDTH)) and(
 				pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 100 or
 				pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 200 or
 				pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 300 or
@@ -266,9 +273,30 @@ hatchV <=	'1' when (
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 312) or
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 324) or
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 336) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 348) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 360) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 372) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 384) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 396) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 408) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 420) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 432) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 444) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 456) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 468) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 480) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 492) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 504) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 516) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 528) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 540) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 552) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 564) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 576) or
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 588) --Each individual hatch
 						)
 						 else '0';
+
 
 end Behavioral;
 

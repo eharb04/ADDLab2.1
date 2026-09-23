@@ -85,6 +85,26 @@ hatchV <=	'1' when (
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 312) or
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 324) or
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 336) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 348) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 360) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 372) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 384) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 396) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 408) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 420) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 432) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 444) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 456) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 468) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 480) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 492) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 504) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 516) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 528) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 540) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 552) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 564) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 576) or
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 588) --Each individual hatch
 						)
 						 else '0';
