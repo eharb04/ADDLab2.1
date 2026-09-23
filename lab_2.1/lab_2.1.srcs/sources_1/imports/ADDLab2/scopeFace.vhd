@@ -54,19 +54,7 @@ begin
                 green <= (others => '0');
                 blue <= (others => '0');
             else
-                if ((borderH = '1') or (borderV = '1')) then
-                    red <= BORDER_R;
-                    green <= BORDER_G;
-                    blue <= BORDER_B;
-                elsif ((gridV = '1') or (gridH = '1')) then
-                    red <= GRID_R;
-                    green <= GRID_G;
-                    blue <= GRID_B;
-                elsif ((hatchH = '1') or (hatchV = '1')) then --blue
-                    red <= GRID_R;
-                    green <= GRID_G;
-                    blue <= GRID_B;
-                elsif (triggerVoltLevel = '1') then --Green
+                if (triggerVoltLevel = '1') then --Green
                     red <= TRIGGER_R;
                     green <= TRIGGER_G;
                     blue <= TRIGGER_B;
@@ -82,6 +70,18 @@ begin
                     red <= BORDER_R;
                     green <= BORDER_G;
                     blue <= BORDER_B;
+                elsif ((borderH = '1') or (borderV = '1')) then
+                    red <= BORDER_R;
+                    green <= BORDER_G;
+                    blue <= BORDER_B;
+                elsif ((gridV = '1') or (gridH = '1')) then
+                    red <= GRID_R;
+                    green <= GRID_G;
+                    blue <= GRID_B;
+                elsif ((hatchH = '1') or (hatchV = '1')) then --blue
+                    red <= GRID_R;
+                    green <= GRID_G;
+                    blue <= GRID_B;
                 else
                     red <= X"00";
                     green <= X"00";
@@ -93,10 +93,10 @@ begin
 
     borderH <=	'1' when ((pixelHorz > L_EDGE - BORDER_LINE_WIDTH) and
                          (pixelHorz < R_EDGE + BORDER_LINE_WIDTH)) and --Horizontal bounds
-                         (((pixelVert < B_EDGE - BORDER_LINE_WIDTH) and
-                         (pixelVert > B_EDGE + BORDER_LINE_WIDTH)) or --Bottom border
-                         ((pixelVert < T_EDGE - BORDER_LINE_WIDTH) and
-                         (pixelVert > T_EDGE + BORDER_LINE_WIDTH))) --Top border
+                         (((pixelVert > B_EDGE - BORDER_LINE_WIDTH) and
+                         (pixelVert < B_EDGE + BORDER_LINE_WIDTH)) or --Bottom border
+                         ((pixelVert > T_EDGE - BORDER_LINE_WIDTH) and
+                         (pixelVert < T_EDGE + BORDER_LINE_WIDTH))) --Top border
                          else '0';
     borderV <=	'1' when ((pixelVert > T_EDGE - BORDER_LINE_WIDTH) and
                          (pixelVert < B_EDGE + BORDER_LINE_WIDTH)) and --Horizontal bounds
@@ -118,7 +118,7 @@ gridH <= '1' when (((pixelHorz > L_EDGE + BORDER_LINE_WIDTH) and
 				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 480 or
 				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 540) else '0';
 gridV <= '1' when (((pixelVert > T_EDGE + BORDER_LINE_WIDTH) and
-				pixelVert < T_EDGE - BORDER_LINE_WIDTH)) and(
+				pixelVert < B_EDGE - BORDER_LINE_WIDTH)) and(
 				pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 100 or
 				pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 200 or
 				pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 300 or
@@ -266,9 +266,30 @@ hatchV <=	'1' when (
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 312) or
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 324) or
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 336) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 348) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 360) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 372) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 384) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 396) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 408) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 420) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 432) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 444) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 456) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 468) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 480) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 492) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 504) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 516) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 528) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 540) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 552) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 564) or
+						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 576) or
 						(pixelVert = T_EDGE + BORDER_LINE_WIDTH + 588) --Each individual hatch
 						)
 						 else '0';
+
 
 end Behavioral;
 

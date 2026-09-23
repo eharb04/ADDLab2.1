@@ -1,14 +1,14 @@
 gridH <= '1' when (((pixelHorz > L_EDGE + BORDER_LINE_WIDTH) and
 				pixelHorz < R_EDGE - BORDER_LINE_WIDTH)) and(
-				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 60 or
-				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 120 or
-				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 180 or
-				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 240 or
-				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 300 or
-				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 360 or
-				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 420 or
-				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 480 or
-				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 540) else '0';
+				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 60.0 or
+				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 120.0 or
+				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 180.0 or
+				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 240.0 or
+				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 300.0 or
+				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 360.0 or
+				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 420.0 or
+				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 480.0 or
+				pixelVert = T_EDGE + BORDER_LINE_WIDTH + 540.0) else '0';
 gridV <= '1' when (((pixelVert > T_EDGE + BORDER_LINE_WIDTH) and
 				pixelVert < T_EDGE - BORDER_LINE_WIDTH)) and(
 				pixelHorz = L_EDGE + BORDER_LINE_WIDTH + 100 or
