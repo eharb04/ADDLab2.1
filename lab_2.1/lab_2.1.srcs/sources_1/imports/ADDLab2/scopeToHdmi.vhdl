@@ -59,7 +59,7 @@ begin
                   blue => blue,
                   ch1 => ch1Wave,
                   ch1Enb => '1',
-                  ch2 => ch1Wave,
+                  ch2 => ch2Wave,
                   ch2Enb => '1');
                  
 
